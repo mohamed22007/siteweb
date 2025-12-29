@@ -36,25 +36,14 @@
         }
 
         /* --- GESTION DES LANGUES --- */
-        /* Par défaut (français), on cache les éléments anglais */
-        .lang-en {
-            display: none !important;
-        }
+        .lang-en { display: none !important; }
         
-        /* Quand le body a la classe 'en-mode', on cache le français et montre l'anglais */
-        body.en-mode .lang-fr {
-            display: none !important;
-        }
-        body.en-mode .lang-en {
-            display: inline-block !important; /* Ou block selon le contexte, géré par le parent */
-        }
+        body.en-mode .lang-fr { display: none !important; }
+        body.en-mode .lang-en { display: inline-block !important; }
         
-        /* Pour les blocs comme les cartes CV qui doivent garder leur layout */
         body.en-mode div.lang-en, 
         body.en-mode section.lang-en,
-        body.en-mode p.lang-en {
-            display: block !important;
-        }
+        body.en-mode p.lang-en { display: block !important; }
 
         /* Navigation */
         nav {
@@ -97,11 +86,8 @@
             cursor: pointer;
         }
 
-        .nav-links a:hover {
-            color: var(--cyan);
-        }
+        .nav-links a:hover { color: var(--cyan); }
 
-        /* Bouton de langue */
         .lang-btn {
             background: transparent;
             border: 1px solid var(--cyan);
@@ -114,9 +100,7 @@
             transition: all 0.3s;
         }
         
-        .lang-btn:hover {
-            background: rgba(100, 255, 218, 0.1);
-        }
+        .lang-btn:hover { background: rgba(100, 255, 218, 0.1); }
 
         .menu-toggle {
             display: none;
@@ -186,7 +170,21 @@
             font-weight: 600;
         }
 
-        .cta-button:hover {
+        /* Bouton Presentation corrigé */
+        .pre-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: transparent;
+            color: var(--cyan);
+            border: 2px solid var(--cyan);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+
+        .cta-button:hover, .pre-button:hover {
             background-color: rgba(100, 255, 218, 0.1);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
@@ -224,24 +222,17 @@
             background-color: var(--cyan);
         }
 
-        /* About Section */
+        .project-card-link .project-description {
+            color: var(--slate) !important;
+        }
+
+        /* About & Projects Styles (Simplified for length) */
         .about-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 3rem;
             align-items: center;
         }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .about-image {
-            position: relative;
-            text-align: center;
-        }
-
         .about-image img {
             width: 100%;
             max-width: 300px;
@@ -249,107 +240,45 @@
             filter: grayscale(30%);
             transition: filter 0.3s;
         }
-
-        .about-image img:hover {
-            filter: grayscale(0%);
-        }
-
+        .about-image img:hover { filter: grayscale(0%); }
         .skills-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
             margin-top: 2rem;
         }
-
-        .skill-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--slate);
-        }
-
-        .skill-item::before {
-            content: '▹';
-            color: var(--cyan);
-            font-size: 1.5rem;
-        }
-
-        /* Projects & Engagements Grid */
+        .skill-item::before { content: '▹'; color: var(--cyan); margin-right: 5px; }
+        
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
-        /* Styles spécifiques pour le lien engagement (rend toute la div cliquable) */
-        a.project-card-link {
-            text-decoration: none;
-            display: block;
-        }
-
         .project-card {
             background-color: var(--lightest-navy);
             border-radius: 10px;
             padding: 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.3s;
             height: 100%;
         }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--cyan), #64FFDA88);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(100, 255, 218, 0.15);
-        }
-
-        .project-card h3 {
-            color: var(--cyan);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .project-description {
-            color: var(--slate);
-            margin-bottom: 1rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
+        .project-card:hover { transform: translateY(-10px); }
+        .project-card h3 { color: var(--cyan); margin-bottom: 1rem; }
         .tech-tag {
             background-color: rgba(100, 255, 218, 0.1);
             color: var(--cyan);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.85rem;
+            margin-right: 5px;
         }
+        a.project-card-link { text-decoration: none; display: block; }
 
-        /* CV Section */
+        /* CV & Presentation Container */
         .cv-container {
             display: flex;
-            justify-content: center; /* Centrer le CV actif */
+            justify-content: center;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .cv-card {
@@ -358,19 +287,13 @@
             border-radius: 10px;
             text-align: center;
             transition: transform 0.3s;
-            max-width: 400px;
+            max-width: 500px; /* Un peu plus large pour la description */
             width: 100%;
         }
 
-        .cv-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .cv-card h3 {
-            margin-bottom: 1rem;
-            color: var(--cyan);
-        }
-
+        .cv-card:hover { transform: translateY(-5px); }
+        .cv-card h3 { margin-bottom: 1rem; color: var(--cyan); }
+        
         .cv-button {
             display: inline-block;
             margin-top: 1rem;
@@ -382,18 +305,14 @@
             font-weight: 600;
             transition: all 0.3s;
         }
-
-        .cv-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
-        }
+        .cv-button:hover { transform: scale(1.05); }
 
         /* Video Section Styles */
         .video-wrapper {
             position: relative;
             width: 100%;
             max-width: 800px;
-            margin: 0 auto 2rem auto;
+            margin: 0 auto;
             background: var(--lightest-navy);
             padding: 1rem;
             border-radius: 10px;
@@ -407,83 +326,24 @@
             display: block;
         }
 
-        /* Contact Section Simplified */
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
+        /* Contact & Footer */
+        .contact-container { text-align: center; max-width: 800px; margin: 0 auto; }
+        .social-links { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; }
+        .social-links a { color: var(--light-gray); transition: 0.3s; }
+        .social-links a:hover { color: var(--cyan); transform: translateY(-5px); }
+        footer { text-align: center; padding: 2rem; margin-top: 4rem; border-top: 1px solid var(--lightest-navy); }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            color: var(--light-gray);
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--cyan);
-            transform: translateY(-5px);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--slate);
-            border-top: 1px solid var(--lightest-navy);
-            margin-top: 4rem;
-        }
-
-        /* Responsive */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
+            .menu-toggle { display: flex; }
             .nav-links {
-                position: fixed;
-                top: 80px;
-                right: -100%;
-                flex-direction: column;
-                background-color: var(--lightest-navy);
-                width: 100%;
-                padding: 2rem;
-                transition: right 0.3s;
+                position: fixed; top: 80px; right: -100%;
+                flex-direction: column; background-color: var(--lightest-navy);
+                width: 100%; padding: 2rem; transition: right 0.3s;
             }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .typing-text {
-                font-size: 1.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 60px 5%;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .social-links {
-                gap: 2rem;
-            }
+            .nav-links.active { right: 0; }
+            .hero h1 { font-size: 2.5rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .pre-button { margin-left: 0; margin-top: 1rem; display: block; text-align: center; }
         }
     </style>
 </head>
@@ -492,37 +352,17 @@
         <div class="nav-container">
             <div class="logo">Portfolio</div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#accueil">
-                    <span class="lang-fr">Accueil</span>
-                    <span class="lang-en">Home</span>
-                </a></li>
-                <li><a href="#apropos">
-                    <span class="lang-fr">À propos</span>
-                    <span class="lang-en">About</span>
-                </a></li>
-                <li><a href="#projets">
-                    <span class="lang-fr">Projets</span>
-                    <span class="lang-en">Projects</span>
-                </a></li>
-                <li><a href="#engagements">
-                    <span class="lang-fr">Engagements</span>
-                    <span class="lang-en">Volunteering</span>
-                </a></li>
-                <li><a href="#presentation">
-                    <span class="lang-fr">Vidéo</span>
-                    <span class="lang-en">Video</span>
-                </a></li>
+                <li><a href="#accueil"><span class="lang-fr">Accueil</span><span class="lang-en">Home</span></a></li>
+                <li><a href="#apropos"><span class="lang-fr">À propos</span><span class="lang-en">About</span></a></li>
+                <li><a href="#projets"><span class="lang-fr">Projets</span><span class="lang-en">Projects</span></a></li>
+                <li><a href="#engagements"><span class="lang-fr">Engagements</span><span class="lang-en">Volunteering</span></a></li>
+                <li><a href="#slides"><span class="lang-fr">Présentation</span><span class="lang-en">Presentation</span></a></li>
                 <li><a href="#cv">CV</a></li>
                 <li><a href="#contact">Contact</a></li>
-                
-                <li>
-                    <button id="langToggle" class="lang-btn">EN</button>
-                </li>
+                <li><button id="langToggle" class="lang-btn">EN</button></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
@@ -542,31 +382,24 @@
                 <span class="lang-fr">Me contacter</span>
                 <span class="lang-en">Contact me</span>
             </a>
+            <a href="#slides" class="pre-button">
+                <span class="lang-fr">Présentation</span>
+                <span class="lang-en">Presentation</span>
+            </a>
         </div>
     </section>
 
     <section id="apropos">
-        <h2 class="section-title">
-            <span class="lang-fr">À propos</span>
-            <span class="lang-en">About Me</span>
-        </h2>
+        <h2 class="section-title"><span class="lang-fr">À propos</span><span class="lang-en">About Me</span></h2>
         <div class="about-content">
             <div class="about-text">
-                <p class="lang-fr">Étudiant en ingénierie des systèmes Linux et cybersécurité à l'ENSEEIHT, je suis passionné par la sécurité informatique et le développement de systèmes robustes. Issu d'une classe préparatoire MP et lauréat aux Olympiades, j'ai développé une solide expertise technique et analytique.</p>
-                <p class="lang-en">Student in Linux systems engineering and cybersecurity at ENSEEIHT, I am passionate about IT security and robust system development. Coming from a preparatory class MP and Olympiad laureate, I have developed strong technical and analytical expertise.</p>
-                
-                <p style="margin-top: 1rem;" class="lang-fr">Je recherche activement un stage DevOps/Cybersécurité pour mai 2025, où je pourrai mettre en pratique mes compétences en développement sécurisé, administration système et automatisation.</p>
-                <p style="margin-top: 1rem;" class="lang-en">I am actively looking for a DevOps/Cybersecurity internship for May 2025, where I can apply my skills in secure development, system administration, and automation.</p>
-                
+                <p class="lang-fr">Étudiant en ingénierie des systèmes Linux et cybersécurité à l'ENSEEIHT, je suis passionné par la sécurité informatique et le développement de systèmes robustes.</p>
+                <p class="lang-en">Student in Linux systems engineering and cybersecurity at ENSEEIHT, I am passionate about IT security and robust system development.</p>
                 <div class="skills-list">
                     <div class="skill-item">Linux / Unix</div>
                     <div class="skill-item">Cybersecurity</div>
                     <div class="skill-item">Java / C</div>
-                    <div class="skill-item">Spring Boot</div>
-                    <div class="skill-item">MySQL / PostgreSQL</div>
                     <div class="skill-item">Docker / DevOps</div>
-                    <div class="skill-item">Arduino / IoT</div>
-                    <div class="skill-item">Git / GitHub</div>
                 </div>
             </div>
             <div class="about-image">
@@ -576,146 +409,57 @@
     </section>
 
     <section id="projets">
-        <h2 class="section-title">
-            <span class="lang-fr">Projets</span>
-            <span class="lang-en">Projects</span>
-        </h2>
+        <h2 class="section-title"><span class="lang-fr">Projets</span><span class="lang-en">Projects</span></h2>
         <div class="projects-grid">
             <div class="project-card">
-                <h3>
-                    <span class="lang-fr">App de messagerie sécurisée</span>
-                    <span class="lang-en">Secure Messaging App</span>
-                </h3>
-                <p class="project-description">
-                    <span class="lang-fr">Application de messagerie chiffrée end-to-end avec authentification sécurisée et stockage MySQL. Interface Flutter.</span>
-                    <span class="lang-en">End-to-end encrypted messaging application with secure authentication and MySQL storage. Flutter interface.</span>
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Spring Boot</span>
-                    <span class="tech-tag">MySQL</span>
-                    <span class="tech-tag">Flutter</span>
-                </div>
+                <h3>App de messagerie sécurisée</h3>
+                <p class="project-description">Chiffrement end-to-end, Flutter & Spring Boot.</p>
+                <div class="project-tech"><span class="tech-tag">Flutter</span><span class="tech-tag">Security</span></div>
             </div>
-
             <div class="project-card">
-                <h3>
-                    <span class="lang-fr">Mini-shell Unix</span>
-                    <span class="lang-en">Unix Mini-shell</span>
-                </h3>
-                <p class="project-description">
-                    <span class="lang-fr">Implémentation d'un shell Unix complet en C avec gestion des processus, pipelines, redirections et signaux.</span>
-                    <span class="lang-en">Implementation of a complete Unix shell in C with process management, pipelines, redirections, and signals.</span>
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">C</span>
-                    <span class="tech-tag">Unix</span>
-                    <span class="tech-tag">System</span>
-                </div>
+                <h3>Mini-shell Unix</h3>
+                <p class="project-description">Shell Unix complet en C.</p>
+                <div class="project-tech"><span class="tech-tag">C</span><span class="tech-tag">System</span></div>
             </div>
-
-            <div class="project-card">
-                <h3>
-                    <span class="lang-fr">Simulateur physique 2D</span>
-                    <span class="lang-en">2D Physics Simulator</span>
-                </h3>
-                <p class="project-description">
-                    <span class="lang-fr">Moteur de simulation physique avec détection de collisions, gravité et contraintes. Interface Swing.</span>
-                    <span class="lang-en">Physics simulation engine with collision detection, gravity, and constraints. Swing interface.</span>
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Java</span>
-                    <span class="tech-tag">Swing</span>
-                    <span class="tech-tag">POO</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>
-                    <span class="lang-fr">Compresseur Huffman</span>
-                    <span class="lang-en">Huffman Compressor</span>
-                </h3>
-                <p class="project-description">
-                    <span class="lang-fr">Algorithme de compression de données (Huffman). Optimisation de la taille et décompression sans perte.</span>
-                    <span class="lang-en">Data compression algorithm (Huffman). Size optimization and lossless decompression.</span>
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Ada</span>
-                    <span class="tech-tag">Algo</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <h3>
-                    <span class="lang-fr">Radar ultrason</span>
-                    <span class="lang-en">Ultrasonic Radar</span>
-                </h3>
-                <p class="project-description">
-                    <span class="lang-fr">Système de détection d'obstacles par ultrasons avec visualisation web temps réel. Projet IoT.</span>
-                    <span class="lang-en">Obstacle detection system via ultrasound with real-time web visualization. IoT Project.</span>
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Arduino</span>
-                    <span class="tech-tag">C++</span>
-                    <span class="tech-tag">IoT</span>
-                </div>
+             <div class="project-card">
+                <h3>Radar ultrason</h3>
+                <p class="project-description">Détection d'obstacles IoT.</p>
+                <div class="project-tech"><span class="tech-tag">Arduino</span><span class="tech-tag">IoT</span></div>
             </div>
         </div>
     </section>
 
     <section id="engagements">
-        <h2 class="section-title">
-            <span class="lang-fr">Engagements Associatifs</span>
-            <span class="lang-en">Civic Engagement</span>
-        </h2>
+        <h2 class="section-title"><span class="lang-fr">Engagements</span><span class="lang-en">Volunteering</span></h2>
         <div class="projects-grid">
-            <a href="https://www.linkedin.com/company/saisissez-votre-chance/?originalSubdomain=fr" target="_blank" class="project-card-link">
+            <a href="https://www.linkedin.com/company/saisissez-votre-chance" target="_blank" class="project-card-link">
                 <div class="project-card">
-                    <h3>
-                        <span class="lang-fr">Saisissez votre chance</span>
-                        <span class="lang-en">Seize Your Chance</span>
-                    </h3>
-                    <p class="project-description">
-                        <span class="lang-fr">Aider les étudiants en association.</span>
-                        <span class="lang-en">Helping students in an association.</span>
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">
-                            <span class="lang-fr">Depuis 2025</span>
-                            <span class="lang-en">Since 2025</span>
-                        </span>
-                        <span class="tech-tag">LinkedIn</span>
-                    </div>
+                    <h3>Saisissez votre chance</h3>
+                    <p class="project-description" >Association étudiante.</p>
+                    <div class="project-tech"><span class="tech-tag">Benevolat</span></div>
                 </div>
             </a>
         </div>
     </section>
 
-    <section id="presentation">
+    <section id="slides">
         <h2 class="section-title">
-            <span class="lang-fr">Présentation Vidéo</span>
-            <span class="lang-en">Video Presentation</span>
+            <span class="lang-fr">Sujet de Présentation</span>
+            <span class="lang-en">Presentation Topic</span>
         </h2>
-        
-        <div class="video-wrapper">
-            <video controls poster="assets/img/poster-video.jpg">
-                <source src="assets/video/presentation.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture de vidéos.
-            </video>
-        </div>
-
         <div class="cv-container">
             <div class="cv-card">
                 <h3>
-                    <span class="lang-fr">Slides de présentation</span>
-                    <span class="lang-en">Presentation Slides</span>
+                    <span class="lang-fr">Support PowerPoint (PPT)</span>
+                    <span class="lang-en">PowerPoint Slides (PPT)</span>
                 </h3>
                 <p>
-                    <span class="lang-fr">Retrouvez le support visuel de ma présentation au format PDF.</span>
-                    <span class="lang-en">Find the visual support of my presentation in PDF format.</span>
+                    <span class="lang-fr">Ceci est le support visuel de la présentation que je vais effectuer. Vous y trouverez les détails de mon projet.</span>
+                    <span class="lang-en">This is the visual support for the presentation I will be giving. You will find the details of my project here.</span>
                 </p>
-                <a href="assets/pdf/presentation.pdf" class="cv-button" download>
-                    <span class="lang-fr">Télécharger le PDF</span>
-                    <span class="lang-en">Download PDF</span>
+                <a href="assets/pdf/Preentation.pptx" class="cv-button" download>
+                    <span class="lang-fr">Télécharger PPT</span>
+                    <span class="lang-en">Download PPT</span>
                 </a>
             </div>
         </div>
@@ -740,33 +484,30 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section id="video-archive">
         <h2 class="section-title">
-            <span class="lang-fr">Me Contacter</span>
-            <span class="lang-en">Contact Me</span>
+            <span class="lang-fr">Vidéo (Ancienne Réalisation)</span>
+            <span class="lang-en">Video (Previous Project)</span>
         </h2>
-        <div class="contact-container">
-            <p style="margin-bottom: 2rem; color: var(--slate); font-size: 1.1rem;">
-                <span class="lang-fr">Je suis actuellement à la recherche d'un stage pour mai 2025.<br>N'hésitez pas à me contacter directement via Email ou LinkedIn.</span>
-                <span class="lang-en">I am currently looking for an internship for May 2025.<br>Feel free to contact me directly via Email or LinkedIn.</span>
-            </p>
+        
+        <div class="video-wrapper">
+            <video controls poster="assets/img/poster-video.jpg">
+                <source src="assets/video/presentation.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
+        </div>
+    </section>
 
+    <section id="contact">
+        <h2 class="section-title"><span class="lang-fr">Me Contacter</span><span class="lang-en">Contact Me</span></h2>
+        <div class="contact-container">
+            <p style="margin-bottom: 2rem; color: var(--slate);">
+                <span class="lang-fr">N'hésitez pas à me contacter via Email ou LinkedIn.</span>
+                <span class="lang-en">Feel free to contact me via Email or LinkedIn.</span>
+            </p>
             <div class="social-links">
-                <a href="https://linkedin.com/in/ton-profil" target="_blank" title="LinkedIn">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
-                </a>
-                <a href="https://github.com/ton-profil" target="_blank" title="GitHub">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                <a href="mailto:ton.email@enseeiht.fr" title="Email">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
-                    </svg>
-                </a>
+                <a href="https://linkedin.com/in/ton-profil"><svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="mailto:ton.email@enseeiht.fr"><svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg></a>
             </div>
         </div>
     </section>
@@ -776,42 +517,21 @@
     </footer>
 
     <script>
-        // --- LOGIQUE DE CHANGEMENT DE LANGUE ---
         const langToggle = document.getElementById('langToggle');
         const body = document.body;
-        
-        // Fonction pour basculer la langue
         langToggle.addEventListener('click', () => {
             body.classList.toggle('en-mode');
-            
-            // Changer le texte du bouton
-            if (body.classList.contains('en-mode')) {
-                langToggle.textContent = 'FR';
-            } else {
-                langToggle.textContent = 'EN';
-            }
+            langToggle.textContent = body.classList.contains('en-mode') ? 'FR' : 'EN';
         });
 
-        // --- MENU & EFFETS ---
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Fermer le menu au clic sur un lien
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Typing effect
         const typingText = document.getElementById('typingText');
-        const text = 'Architecture, Systems and Networks Engineering Student';
+        const text = 'Systems and Networks Engineering Student';
         let index = 0;
-
         function type() {
             if (index < text.length) {
                 typingText.textContent += text.charAt(index);
@@ -819,35 +539,20 @@
                 setTimeout(type, 100);
             }
         }
-
         window.addEventListener('load', type);
 
-        // Scroll animations
-        const sections = document.querySelectorAll('section');
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
